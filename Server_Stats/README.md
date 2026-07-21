@@ -29,7 +29,7 @@ A lightweight Bash script (`server-stats.sh`) designed to analyze and display cr
    ```Bash
    ./server-stats.sh```
 
-##Sample OutPut
+## Sample OutPut
 ======================================================
        ESTADÍSTICAS DE RENDIMIENTO DEL SERVIDOR       
 ======================================================
@@ -64,6 +64,6 @@ PID      PPID     %CPU       CMD
 9280     3743     1.9%       /home/barretto/.local/share/code                  
 ...
 
-##Project Context
+## Project Context
 
 This project to practice Linux system administration, Bash scripting, and core process metrics analysis.
