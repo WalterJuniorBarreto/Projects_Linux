@@ -1,0 +1,51 @@
+name: Deploy Static Site to GitHub Pages
+
+# 1. EL DISPARADOR (Trigger)
+# Solo se ejecuta al hacer push a la rama 'main' Y solo si se modificó 'index.html'
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'index.html'
+
+# 2. PERMISOS
+# Necesarios para que el bot de GitHub pueda escribir en GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 3. CONTROL DE CONCURRENCIA
+# Evita que dos despliegues simultáneos choquen entre sí
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# 4. EL TRABAJO (Job)
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Paso A: Clonar el código de tu repositorio en el servidor de GitHub
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Paso B: Configurar el entorno de GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # Paso C: Empaquetar tu archivo index.html
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      # Paso D: Publicar la página en internet
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
