@@ -1,0 +1,17 @@
+sudo tee /etc/systemd/system/dummy.service > /dev/null << 'EOF'
+[Unit]
+Description=Dummy Long Running Background Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/dummy.sh
+Restart=always
+RestartSec=5
+User=root
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+EOF
