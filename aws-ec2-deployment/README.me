@@ -1,0 +1,56 @@
+# Despliegue de Servidor Web en AWS EC2
+
+Aprovisionamiento y despliegue de un servidor web estático utilizando una instancia virtual en la nube (Amazon Web Services EC2), autenticación remota vía SSH y Nginx sobre Ubuntu Server.
+
+## Estructura del Repositorio
+
+```text
+.
+├── deploy.sh       # Script de automatización de despliegue remoto
+├── index.html      # Plantilla del sitio web estático
+├── .gitignore      # Exclusión de claves privadas (.pem)
+└── README.md       # Documentación técnica y guía de replicación
+Especificaciones de Infraestructura (AWS)
+Servicio: Amazon Elastic Compute Cloud (EC2).
+
+AMI: Ubuntu Server LTS (HVM), SSD Volume Type.
+
+Tipo de Instancia: t2.micro (Capa gratuita / Free Tier).
+
+Par de llaves: RSA (.pem).
+
+Seguridad (Security Group):
+
+Puerto 22 (SSH): Acceso de administración remota.
+
+Puerto 80 (HTTP): Tráfico público entrante para el servidor web.
+
+Guía de Uso
+1. Conexión Manual vía SSH
+Bash
+chmod 400 ec2-key.pem
+ssh -i ec2-key.pem ubuntu@<IP_PUBLICA>
+2. Despliegue Automatizado
+Desde tu máquina local, ejecuta el script proporcionando la IP pública asignada y la ruta a tu llave:
+
+Bash
+./deploy.sh <IP_PUBLICA> ec2-key.pem
+3. Verificación
+Abre tu navegador e ingresa a la URL pública:
+
+Plaintext
+http://<IP_PUBLICA>
+EOF
+
+
+---
+
+**Paso 4: Registrar y subir los cambios a Git**
+
+Asegúrate de que `git status` no muestre ningún archivo `.pem` y sube los cambios:
+
+```bash
+git add .
+git status
+git commit -m "Implementacion completa de despliegue en AWS EC2, automatizacion y documentacion"
+git push origin main
