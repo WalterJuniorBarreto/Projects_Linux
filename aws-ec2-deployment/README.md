@@ -1,6 +1,3 @@
-Claro. Aquí está **todo completamente en Markdown**, incluyendo los bloques `bash`, `text`, `plaintext`, y también la parte final de Git. El bloque externo usa **4 backticks** para que puedas copiarlo entero sin que se rompa.
-
-````markdown
 # Automated Web Server Deployment on AWS EC2
 
 ![AWS](https://img.shields.io/badge/AWS-EC2-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)
@@ -928,8 +925,3 @@ git push origin main
 # Licencia
 
 Este proyecto puede utilizarse con fines educativos y demostrativos para practicar conceptos de AWS, Linux, Bash, Nginx, SSH, Systemd, automatización de servidores y DevOps.
-````
-
-git status
-git commit -m "Implementacion completa de despliegue en AWS EC2, automatizacion y documentacion"
-git push origin main
